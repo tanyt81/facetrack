@@ -1,0 +1,15 @@
+<launch>
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find facetrack)/config/custom_rosconsole.conf"/>
+  
+  <!-- ################## facetrack_node ################### -->
+  <node name="facetrack_node" pkg="facetrack" type="facetrack_node" output="screen" clear_params="true" required="true">
+    <rosparam param="facetrack" command="load" file="$(find facetrack)/config/facetrack_params.yaml" />
+  </node>
+
+  <!-- ################## video_capture_node ################### -->
+  <node name="video_capture_node" pkg="facetrack" type="video_capture_node" output="screen" clear_params="true" required="true">
+    <rosparam param="facetrack" command="load" file="$(find facetrack)/config/facetrack_params.yaml" />
+  </node>
+
+</launch>
